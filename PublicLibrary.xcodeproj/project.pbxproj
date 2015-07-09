@@ -89,6 +89,15 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		BF5B8DA41B4E2BDD00676D0A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFE81A4F1B464F680019E457 /* Main.storyboard */,
+				BFE81A541B464F680019E457 /* LaunchScreen.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		BFE81A3D1B464F680019E457 = {
 			isa = PBXGroup;
 			children = (
@@ -112,10 +121,9 @@
 			children = (
 				BFE81A4B1B464F680019E457 /* AppDelegate.swift */,
 				BF503C071B49A14E0053DC62 /* Models */,
-				BFE81A4F1B464F680019E457 /* Main.storyboard */,
 				BF503C3E1B49FA590053DC62 /* Controllers */,
+				BF5B8DA41B4E2BDD00676D0A /* Views */,
 				BFE81A521B464F680019E457 /* Images.xcassets */,
-				BFE81A541B464F680019E457 /* LaunchScreen.xib */,
 				BFE81A491B464F680019E457 /* Supporting Files */,
 			);
 			path = PublicLibrary;

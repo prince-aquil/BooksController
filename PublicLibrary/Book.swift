@@ -9,11 +9,11 @@
 import Foundation
 
 class Book {
-  let title: String?
-  let author: String?
-  let pages: Int?
-  let publisher: String?
-  let iSBN: Int?
+  var title: String?
+  var author: String?
+  var pages: Int?
+  var publisher: String?
+  var iSBN: Int?
   
   init (title: String, author: String, pages: Int, publisher: String?, iSBN: Int) {
     self.title = title

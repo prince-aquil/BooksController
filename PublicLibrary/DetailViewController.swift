@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var bookTitleTextField: UITextField!
   @IBOutlet weak var bookAuthorTextField: UITextField!
@@ -20,6 +20,36 @@ class DetailViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupTextFields()
+    
+//    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+//    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+  }
+  
+//  deinit {
+//    NSNotificationCenter.defaultCenter().removeObserver(self)
+//  }
+  
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
+  
+  private func setupTextFields() {
+    
+    self.bookTitleTextField.delegate = self
+    self.bookAuthorTextField.delegate = self
+    self.bookPublisherTextField.delegate = self
+    self.bookPagesTextField.delegate = self
+    self.bookISBNTextField.delegate = self
+
+    self.bookTitleTextField.tag = 0
+    self.bookAuthorTextField.tag = 1
+    self.bookPublisherTextField.tag = 2
+    self.bookPagesTextField.tag = 3
+    self.bookISBNTextField.tag = 4
+
     bookTitleTextField.text = selectedBook.title
     bookAuthorTextField.text = selectedBook.author
     bookPublisherTextField.text = selectedBook.publisher
@@ -31,50 +61,40 @@ class DetailViewController: UIViewController {
     }
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-  
-  private func setupTextFields() {
-    
-    self.bookTitleTextField.tag = 0
-    self.bookAuthorTextField.tag = 1
-    self.bookPublisherTextField.tag = 2
-    self.bookPagesTextField.tag = 3
-    self.bookISBNTextField.tag = 4
-
-    self.bookTitleTextField.text = self.selectedBook.title
-    self.bookAuthorTextField.text = self.selectedBook.title
-    self.bookPublisherTextField.text = self.selectedBook.title
-    self.bookPagesTextField.text = self.selectedBook.title
-    self.bookISBNTextField.text = self.selectedBook.title
-
-    
-  }
-  
   func textFieldShouldReturn(textField: UITextField) -> Bool {
-    
     textField.resignFirstResponder()
     return false
   }
   
   func textFieldDidEndEditing(textField: UITextField) {
     
+//    if textField.tag == 0 {
+//      //set the first name
+//    println(textField.text)
+//    } else {
+      //set the last name
+//      self.selectedBook.author = textField.text
+//    }
+    if let textFieldText = textField.text {
+
     switch textField.tag {
     case 0:
-      textField.text = selectedBook.title
+       self.selectedBook.title = textFieldText
     case 1:
-      textField.text = self.selectedBook.author
+      self.selectedBook.author = textFieldText
     case 2:
-      textField.text = self.selectedBook.publisher
+      self.selectedBook.publisher = textFieldText
     case 3:
-      textField.text = String(stringInterpolationSegment: self.selectedBook.pages)
+      self.selectedBook.pages = textFieldText.toInt()
     default:
-      textField.text = String(stringInterpolationSegment:self.selectedBook.iSBN)
+      self.selectedBook.iSBN = textFieldText.toInt()
+      }
     }
   }
 
+  @IBAction func updateButtonPressed(sender: UIButton) {
+    self.navigationController?.popViewControllerAnimated(true)
+  }
   
   /*
   // MARK: - Navigation

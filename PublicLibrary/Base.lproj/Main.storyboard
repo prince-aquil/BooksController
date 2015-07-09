@@ -222,6 +222,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePh-MM-zyy">
+                                <rect key="frame" x="203" y="383" width="55" height="30"/>
+                                <state key="normal" title="Update!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateButtonPressed:" destination="9Rg-na-unr" eventType="touchUpInside" id="suB-Gt-uV8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -241,6 +250,7 @@
                             <constraint firstItem="NTd-Wb-4cw" firstAttribute="centerY" secondItem="fKp-Qo-izx" secondAttribute="centerY" id="McL-hH-ubX"/>
                             <constraint firstItem="hop-d8-29z" firstAttribute="trailing" secondItem="NTd-Wb-4cw" secondAttribute="trailing" id="MsD-2B-Vpt"/>
                             <constraint firstItem="hmH-1g-3AF" firstAttribute="baseline" secondItem="2qb-q9-IhB" secondAttribute="baseline" constant="6" id="POX-Lh-R1N"/>
+                            <constraint firstItem="ePh-MM-zyy" firstAttribute="top" secondItem="GIO-j5-gwB" secondAttribute="bottom" constant="8" symbolic="YES" id="To8-RX-lBQ"/>
                             <constraint firstItem="hop-d8-29z" firstAttribute="trailing" secondItem="NTd-Wb-4cw" secondAttribute="trailing" id="WKO-Xi-ur4"/>
                             <constraint firstAttribute="centerX" secondItem="suB-7k-Aeh" secondAttribute="centerX" id="dak-lG-6J7"/>
                             <constraint firstItem="ud6-eS-NjI" firstAttribute="centerY" secondItem="hop-d8-29z" secondAttribute="centerY" id="fhh-GR-zIm"/>
@@ -259,6 +269,7 @@
                             <constraint firstItem="ooI-gV-73O" firstAttribute="baseline" secondItem="jeD-Pd-XyI" secondAttribute="baseline" constant="-6" id="xof-q5-Ycg"/>
                             <constraint firstItem="jeD-Pd-XyI" firstAttribute="top" secondItem="hmH-1g-3AF" secondAttribute="bottom" constant="31" id="xxZ-sg-nku"/>
                             <constraint firstAttribute="centerX" secondItem="NTd-Wb-4cw" secondAttribute="centerX" constant="121.5" id="yfS-nm-86E"/>
+                            <constraint firstItem="ePh-MM-zyy" firstAttribute="leading" secondItem="GIO-j5-gwB" secondAttribute="leading" id="yi7-aJ-8fl"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

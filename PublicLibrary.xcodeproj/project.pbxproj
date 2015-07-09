@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0785861B4CE03F0013CBF2 /* LibrariesShelfsAndBooks.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0785851B4CE03F0013CBF2 /* LibrariesShelfsAndBooks.plist */; };
 		BF503C091B49A2080053DC62 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF503C081B49A2080053DC62 /* Book.swift */; };
 		BF503C0B1B49A24E0053DC62 /* Shelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF503C0A1B49A24E0053DC62 /* Shelf.swift */; };
 		BF503C3D1B49FA500053DC62 /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF503C3C1B49FA500053DC62 /* LibraryTableViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF0785851B4CE03F0013CBF2 /* LibrariesShelfsAndBooks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LibrariesShelfsAndBooks.plist; sourceTree = "<group>"; };
 		BF503C081B49A2080053DC62 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BF503C0A1B49A24E0053DC62 /* Shelf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shelf.swift; sourceTree = "<group>"; };
 		BF503C3C1B49FA500053DC62 /* LibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		BFE81A491B464F680019E457 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BF0785851B4CE03F0013CBF2 /* LibrariesShelfsAndBooks.plist */,
 				BFE81A4A1B464F680019E457 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -228,6 +231,7 @@
 			files = (
 				BFE81A511B464F680019E457 /* Main.storyboard in Resources */,
 				BFE81A561B464F680019E457 /* LaunchScreen.xib in Resources */,
+				BF0785861B4CE03F0013CBF2 /* LibrariesShelfsAndBooks.plist in Resources */,
 				BFE81A531B464F680019E457 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

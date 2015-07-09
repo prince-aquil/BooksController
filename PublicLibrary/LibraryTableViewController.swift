@@ -10,22 +10,28 @@ import UIKit
 
 class LibraryTableViewController: UITableViewController {
   
+  @IBOutlet var librariesTableView: UITableView!
   var libraries = [Library]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupLibrariesShelfsAndBooks()
-    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+//     self.navigationItem.rightBarButtonItem = self.editButtonItem()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+  self.editButtonItem().enabled = true
   }
   
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -99,7 +105,50 @@ class LibraryTableViewController: UITableViewController {
   return true
   }
   */
+  func addItem(sender:UIBarButtonItem) {
+    
+    let alert : UIAlertController = UIAlertController(title: "Library", message: "Add a new library:", preferredStyle: UIAlertControllerStyle.Alert)
+    
+    let saveAction : UIAlertAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+      let textField : UITextField = alert.textFields![0] as! UITextField
+      self.saveNewLibraryName(name: textField.text)
+      self.librariesTableView.reloadData()
+    }
+    
+    let cancelAction : UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+      self.editButtonItem().enabled = true
+    }
+    
+    alert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in }
+    alert.addAction(saveAction)
+    alert.addAction(cancelAction)
+    
+    presentViewController(alert, animated: true, completion: nil)
+    
+  }
   
+  func saveNewLibraryName(name newName: String) {
+    let name = Library(libraryName: newName)
+    self.libraries.append(name)
+  }
+
+  override func setEditing(editing: Bool, animated: Bool) {
+    super.setEditing(editing, animated: animated)
+    self.librariesTableView.setEditing(editing, animated: animated)
+    if editing {
+      
+      self.editButtonItem().enabled = false
+      
+      //Add an add button
+      self.navigationItem.setLeftBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addItem:"), animated: true)
+      
+    } else {
+      self.editButtonItem().enabled = true
+      self.navigationItem.leftBarButtonItem = nil
+
+    }
+  }
+
   /*
   // Override to support editing the table view.
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

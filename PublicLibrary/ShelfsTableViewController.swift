@@ -10,6 +10,8 @@ import UIKit
 
 class ShelfsTableViewController: UITableViewController {
   
+  @IBOutlet var shelfTableView: UITableView!
+  
   var selectedLibrary: Library!
   
   override func viewDidLoad() {
@@ -19,7 +21,7 @@ class ShelfsTableViewController: UITableViewController {
     // self.clearsSelectionOnViewWillAppear = false
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+     self.navigationItem.rightBarButtonItem = self.editButtonItem()
   }
   
   override func didReceiveMemoryWarning() {
@@ -41,6 +43,55 @@ class ShelfsTableViewController: UITableViewController {
     let shelfNameTextLabel = cell.viewWithTag(2) as! UILabel
     shelfNameTextLabel.text = shelfToDisplay.name
     return cell
+  }
+  
+  override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+  if indexPath.row == self.selectedLibrary.shelfsInLibrary.count {
+  return UITableViewCellEditingStyle.Insert
+  } else {
+    return UITableViewCellEditingStyle.Delete
+  }
+  }
+  
+  override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+  self.editButtonItem().enabled = true
+  }
+  
+  func addShelfItem(sender:UIBarButtonItem) {
+    
+    let alert: UIAlertController = UIAlertController(title: "Shelf", message: "Add a new shelf to this library", preferredStyle: UIAlertControllerStyle.Alert)
+    
+    let saveAction: UIAlertAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) {(action: UIAlertAction!) -> Void in
+      let textfield: UITextField = alert.textFields![0] as! UITextField
+      self.saveNewShelfName(name: textfield.text)
+      self.shelfTableView.reloadData()
+  }
+  
+    let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+    self.editButtonItem().enabled = true
+      }
+    alert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in }
+      alert.addAction(saveAction)
+      alert.addAction(cancelAction)
+      
+      presentViewController(alert, animated: true, completion: nil)
+    }
+  
+  func saveNewShelfName(name newName: String) {
+    let name = Shelf(name: newName, library: selectedLibrary)
+  }
+  
+  override func setEditing(editing: Bool, animated: Bool) {
+    super.setEditing(editing, animated: animated)
+    self.shelfTableView.setEditing(editing, animated: animated)
+    if editing {
+      self.editButtonItem().enabled = false
+      self.navigationItem.setLeftBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addShelfItem:"), animated: true)
+    } else {
+      self.editButtonItem().enabled = true
+      self.navigationItem.leftBarButtonItem = nil
+
+    }
   }
   
   /*

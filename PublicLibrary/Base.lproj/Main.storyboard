@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2Di-nc-RYv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2Di-nc-RYv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -52,6 +52,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Library" id="S7d-xp-Dpa"/>
+                    <connections>
+                        <outlet property="librariesTableView" destination="ilW-MC-Yn1" id="O4b-pG-rUB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbh-Sv-6la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,6 +102,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Shelfs" id="9Zg-Tj-98u"/>
+                    <connections>
+                        <outlet property="shelfTableView" destination="MhV-bd-eGl" id="OfI-AT-PmZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZV-c0-0V5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,6 +147,9 @@
                             <outlet property="delegate" destination="IUs-c2-Cmp" id="7Pf-Dn-y5E"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="booksTableView" destination="xi6-5K-Cld" id="Ueb-Yc-Zvb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1FF-Gz-cI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,13 +274,13 @@
                                 <exclude reference="WKO-Xi-ur4"/>
                                 <exclude reference="ud5-u6-dhv"/>
                                 <exclude reference="xFx-Mw-m3b"/>
-                                <exclude reference="rSm-is-q2R"/>
                                 <exclude reference="lj2-b4-ddh"/>
-                                <exclude reference="dak-lG-6J7"/>
+                                <exclude reference="rSm-is-q2R"/>
                                 <exclude reference="60W-NO-RCJ"/>
                                 <exclude reference="ZNU-2S-r6k"/>
                                 <exclude reference="mdx-hU-ofu"/>
                                 <exclude reference="rHV-eT-qKd"/>
+                                <exclude reference="dak-lG-6J7"/>
                             </mask>
                         </variation>
                     </view>

@@ -17,12 +17,6 @@ class LibraryTableViewController: UITableViewController {
     super.viewDidLoad()
     setupLibrariesShelfsAndBooks()
     self.navigationItem.rightBarButtonItem = self.editButtonItem()
-
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = false
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//     self.navigationItem.rightBarButtonItem = self.editButtonItem()
   }
   
   override func didReceiveMemoryWarning() {
@@ -31,7 +25,7 @@ class LibraryTableViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-  self.editButtonItem().enabled = true
+    self.editButtonItem().enabled = true
   }
   
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -98,13 +92,7 @@ class LibraryTableViewController: UITableViewController {
     var laCamaGrandeDeSofia = Book(title: "La cama grande de Sofia", author: "Burke, Tina", pages: 18, publisher: "Kane/Miller Book Pub", iSBN: 9781933605784)
     laCamaGrandeDeSofia.enshelf(spanishKidsShelf)
   }
-  /*
-  // Override to support conditional editing of the table view.
-  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-  // Return NO if you do not want the specified item to be editable.
-  return true
-  }
-  */
+  
   func addItem(sender:UIBarButtonItem) {
     
     let alert : UIAlertController = UIAlertController(title: "Library", message: "Add a new library:", preferredStyle: UIAlertControllerStyle.Alert)
@@ -122,59 +110,25 @@ class LibraryTableViewController: UITableViewController {
     alert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in }
     alert.addAction(saveAction)
     alert.addAction(cancelAction)
-    
     presentViewController(alert, animated: true, completion: nil)
-    
   }
   
   func saveNewLibraryName(name newName: String) {
     let name = Library(libraryName: newName)
     self.libraries.append(name)
   }
-
+  
   override func setEditing(editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
     self.librariesTableView.setEditing(editing, animated: animated)
     if editing {
-      
       self.editButtonItem().enabled = false
-      
-      //Add an add button
       self.navigationItem.setLeftBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addItem:"), animated: true)
-      
     } else {
       self.editButtonItem().enabled = true
       self.navigationItem.leftBarButtonItem = nil
-
     }
   }
-
-  /*
-  // Override to support editing the table view.
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-  if editingStyle == .Delete {
-  // Delete the row from the data source
-  tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-  } else if editingStyle == .Insert {
-  // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-  }
-  }
-  */
-  
-  /*
-  // Override to support rearranging the table view.
-  override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-  
-  }
-  */
-  
-  /*
-  // Override to support conditional rearranging of the table view.
-  override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-  // Return NO if you do not want the item to be re-orderable.
-  return true
-  }
-  */
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "ShowShelfsTableViewController" {
@@ -183,7 +137,6 @@ class LibraryTableViewController: UITableViewController {
         if let indexPath = self.tableView.indexPathForSelectedRow() {
           let selectedRow = indexPath.row
           let selectedLibrary = self.libraries[selectedRow]
-          println(selectedLibrary.libraryName)
           ShelfsTableViewController.selectedLibrary = selectedLibrary
         }
       }
